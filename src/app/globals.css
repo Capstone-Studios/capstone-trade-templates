@@ -1,26 +1,61 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-base: #FAF9F7;
+  --bg-surface: #FFFFFF;
+  --bg-elevated: #F4F2EE;
+  --bg-contrast: #111111;
+  --brand-primary: #1B2559;
+  --brand-accent: #B45309;
+  --brand-soft: rgba(180, 83, 9, 0.08);
+  --text-primary: #111111;
+  --text-secondary: rgba(17, 17, 17, 0.68);
+  --text-muted: rgba(17, 17, 17, 0.42);
+  --text-inverse: #FAF9F7;
+  --border-subtle: rgba(17, 17, 17, 0.08);
+  --border-medium: rgba(17, 17, 17, 0.14);
+  --border-strong: rgba(17, 17, 17, 0.22);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+body { background: var(--bg-base); color: var(--text-primary); font-feature-settings: "ss01", "cv11"; }
+::selection { background: var(--brand-accent); color: #fff; }
+
+/* ── Grain overlay ── */
+.grain { position: relative; }
+.grain::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); mix-blend-mode: multiply; }
+
+/* ── Photo slot ── */
+.photo-slot { position: relative; background: linear-gradient(135deg, #EDEAE3 0%, #DDD8CE 100%); overflow: hidden; isolation: isolate; }
+.photo-slot::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(45deg, rgba(17,17,17,0.03) 25%, transparent 25%, transparent 75%, rgba(17,17,17,0.03) 75%), linear-gradient(45deg, rgba(17,17,17,0.03) 25%, transparent 25%, transparent 75%, rgba(17,17,17,0.03) 75%); background-size: 16px 16px; background-position: 0 0, 8px 8px; pointer-events: none; }
+.photo-slot[data-label]::before { content: attr(data-label); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(17,17,17,0.38); font-weight: 500; padding: 6px 12px; border: 1px dashed rgba(17,17,17,0.24); border-radius: 999px; background: rgba(255,255,255,0.6); backdrop-filter: blur(4px); white-space: nowrap; }
+@keyframes kenburns { 0% { transform: scale(1) translate(0,0); } 100% { transform: scale(1.06) translate(-1.5%,-1%); } }
+.photo-slot > img { width: 100%; height: 100%; object-fit: cover; animation: kenburns 18s ease-in-out infinite alternate; }
+
+/* ── Fade cascade ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) forwards; }
+.fade-up-1 { opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.12s forwards; }
+.fade-up-2 { opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.24s forwards; }
+.fade-up-3 { opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.36s forwards; }
+.fade-up-4 { opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.48s forwards; }
+
+/* ── Scroll-driven reveals ── */
+@supports (animation-timeline: view()) {
+  @keyframes revealIn { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes riseIn { from { opacity: 0; transform: translateY(36px) scale(0.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  .reveal { animation: revealIn linear both; animation-timeline: view(); animation-range: entry 0% entry 60%; }
+  .reveal-rise { animation: riseIn linear both; animation-timeline: view(); animation-range: entry 5% entry 55%; }
+}
+@supports not (animation-timeline: view()) { .reveal, .reveal-rise { opacity: 1; transform: none; } }
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  .photo-slot > img { animation: none; }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* ── Utilities ── */
+.eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
+.link-underline { background-image: linear-gradient(currentColor, currentColor); background-size: 0% 1px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size 0.35s cubic-bezier(0.22,1,0.36,1); }
+.link-underline:hover { background-size: 100% 1px; }
