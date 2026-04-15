@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+// trigger redeploy
 
 const TRADES = [
   { slug: "roofing", label: "Roofing", color: "#C8342B", desc: "Storm-ready craftsman. Shingle library, warranty tiers, drone inspections." },
