@@ -100,26 +100,40 @@ export default function RoofingPage() {
       style={{ fontFamily: 'var(--font-barlow), var(--font-body), system-ui, sans-serif' }}
     >
       {/* ── NAV ── */}
-      <nav className="fixed top-0 inset-x-0 z-50 bg-[#0c0c0c]/95 backdrop-blur-md border-b border-white/5">
+      <nav className="fixed top-0 inset-x-0 z-50 bg-[#0c0c0c] border-b-2 border-[#c41017]">
         <div className="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
           <a
             href="#"
-            className="text-white text-lg font-semibold tracking-tight"
-            style={{ fontFamily: 'var(--font-display), Georgia, serif' }}
+            className="flex items-center gap-3 text-white"
           >
-            Robert&apos;s{' '}
-            <span className="font-normal italic text-white/70">Exterior</span>{' '}
-            Services, LLC
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://robertsexteriorservices.com/images/roberts_logo.jpg"
+              alt="Robert's Exterior Services Logo"
+              className="w-10 h-10 rounded-sm object-cover"
+            />
+            <div
+              className="text-[17px] font-bold leading-[1.15] tracking-tight"
+              style={{ fontFamily: 'var(--font-display), Georgia, serif' }}
+            >
+              Robert&apos;s <span className="text-[#c41017] italic font-normal">Exterior</span>
+              <br />
+              <span className="text-[14px]">Services, LLC</span>
+            </div>
           </a>
-          <div className="hidden md:flex items-center gap-8 text-[13px] font-medium text-white/60">
+          <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((l) => (
-              <a key={l} href={`#${l.toLowerCase()}`} className="hover:text-white transition-colors">
+              <a
+                key={l}
+                href={`#${l.toLowerCase()}`}
+                className="text-[12px] font-semibold uppercase tracking-[0.12em] text-white/60 hover:text-white transition-colors"
+              >
                 {l}
               </a>
             ))}
             <a
               href="#contact"
-              className="px-5 py-2.5 rounded-full bg-[#c41017] text-white text-[13px] font-semibold hover:bg-[#dc1219] transition-colors"
+              className="px-6 py-2.5 rounded-sm border-2 border-[#c41017] bg-[#c41017] text-white text-[12px] font-bold uppercase tracking-[0.1em] hover:bg-[#dc1219] hover:border-[#dc1219] transition-colors"
             >
               Get a Quote
             </a>
@@ -179,19 +193,39 @@ export default function RoofingPage() {
               </a>
             </div>
 
-            {/* Stats */}
-            <div className="mt-14 flex gap-10 flex-wrap">
-              {[
-                { value: '4.6\u2605', label: 'Google Rating' },
-                { value: '35+', label: 'Years in Business' },
-                { value: '\u26A1', label: 'Same Day Repairs' },
-              ].map((s) => (
-                <div key={s.label}>
-                  <div className="text-[28px] font-bold text-white tracking-tight leading-none">{s.value}</div>
-                  <div className="mt-1 text-[11px] uppercase tracking-[0.12em] text-white/35">{s.label}</div>
+          </div>
+
+          {/* Stats — boxes positioned bottom-right */}
+          <div className="absolute bottom-10 right-6 md:right-10 hidden md:flex gap-4">
+            {[
+              { value: '4.6★', label: 'Google Rating' },
+              { value: '35+', label: 'Years in Business' },
+              { value: 'Same', label: 'Day Repairs' },
+            ].map((s) => (
+              <div key={s.label} className="bg-[#0c0c0c]/70 backdrop-blur-sm border border-white/10 rounded-lg px-6 py-4 text-center">
+                <div
+                  className="text-[28px] font-bold text-[#c41017] tracking-tight leading-none"
+                  style={{ fontFamily: 'var(--font-display), Georgia, serif' }}
+                >
+                  {s.value}
                 </div>
-              ))}
-            </div>
+                <div className="mt-1 text-[10px] uppercase tracking-[0.14em] text-white/50 font-semibold">{s.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Stats — mobile (inline) */}
+          <div className="md:hidden mt-14 flex gap-8 flex-wrap">
+            {[
+              { value: '4.6★', label: 'Google Rating' },
+              { value: '35+', label: 'Years in Business' },
+              { value: '⚡', label: 'Same Day Repairs' },
+            ].map((s) => (
+              <div key={s.label}>
+                <div className="text-[28px] font-bold text-white tracking-tight leading-none">{s.value}</div>
+                <div className="mt-1 text-[11px] uppercase tracking-[0.12em] text-white/35">{s.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
