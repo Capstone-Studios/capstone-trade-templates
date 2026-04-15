@@ -274,7 +274,7 @@ export default function GeneralContractorPage() {
       {/* ═══════════════════════ HERO ═══════════════════════ */}
       <section className="pt-16">
         {/* Hero image slot */}
-        <div className="photo-slot aspect-[21/9] w-full" data-label="Stunning completed kitchen · 2100×900" />
+        <div className="photo-slot aspect-[21/9] w-full" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
 
         <div className="max-w-7xl mx-auto px-6 py-20 md:py-28">
           <div className="max-w-3xl">
@@ -348,7 +348,7 @@ export default function GeneralContractorPage() {
                 key={p.title}
                 className="reveal-rise group cursor-pointer rounded-sm overflow-hidden border border-[var(--border-subtle)] hover:shadow-xl hover:shadow-[rgba(139,111,62,0.08)] transition-all duration-500"
               >
-                <div className="photo-slot aspect-[4/3] group-hover:scale-[1.02] transition-transform duration-700" data-label={p.label} />
+                <div className="photo-slot aspect-[4/3] group-hover:scale-[1.02] transition-transform duration-700" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-[10px] font-bold tracking-[0.2em] uppercase bg-[var(--brand-soft)] text-[#8B6F3E] px-3 py-1 rounded-full">
@@ -378,7 +378,7 @@ export default function GeneralContractorPage() {
           <div className="grid md:grid-cols-3 gap-6 items-center">
             {/* Before */}
             <div className="reveal-rise">
-              <div className="photo-slot aspect-[4/3] rounded-sm" data-label="Before photo · 800×600" />
+              <div className="photo-slot aspect-[4/3] rounded-sm" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
               <p className="text-center text-[11px] font-semibold tracking-[0.2em] uppercase text-[var(--text-muted)] mt-4">Before</p>
             </div>
 
@@ -388,7 +388,7 @@ export default function GeneralContractorPage() {
               <div className="hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 -translate-x-full">
                 <ArrowRight className="w-5 h-5 text-[#8B6F3E]" />
               </div>
-              <div className="photo-slot aspect-[4/3] rounded-sm" data-label="During construction · 800×600" />
+              <div className="photo-slot aspect-[4/3] rounded-sm" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
               <p className="text-center text-[11px] font-semibold tracking-[0.2em] uppercase text-[var(--text-muted)] mt-4">During Construction</p>
               <div className="hidden md:flex absolute -right-6 top-1/2 -translate-y-1/2 translate-x-full">
                 <ArrowRight className="w-5 h-5 text-[#8B6F3E]" />
@@ -397,7 +397,7 @@ export default function GeneralContractorPage() {
 
             {/* After */}
             <div className="reveal-rise">
-              <div className="photo-slot aspect-[4/3] rounded-sm" data-label="After photo · 800×600" />
+              <div className="photo-slot aspect-[4/3] rounded-sm" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
               <p className="text-center text-[11px] font-semibold tracking-[0.2em] uppercase text-[var(--text-muted)] mt-4">After</p>
             </div>
           </div>
@@ -418,7 +418,7 @@ export default function GeneralContractorPage() {
                 key={s.title}
                 className="reveal-rise group rounded-sm overflow-hidden border border-[var(--border-subtle)] hover:border-[var(--border-medium)] transition-all"
               >
-                <div className="photo-slot aspect-[4/3]" data-label={s.label} />
+                <div className="photo-slot aspect-[4/3]" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
                 <div className="p-6">
                   <h3 className="text-lg font-medium tracking-tight mb-1">{s.title}</h3>
                   <p className="text-[13px] font-semibold text-[#8B6F3E] mb-3">{s.budget}</p>
@@ -465,7 +465,7 @@ export default function GeneralContractorPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {TEAM.map((t) => (
               <div key={t.name} className="reveal-rise group">
-                <div className="photo-slot aspect-[4/5] rounded-sm mb-5" data-label={t.label} />
+                <div className="photo-slot aspect-[4/5] rounded-sm mb-5" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
                 <h3 className="text-lg font-medium tracking-tight">{t.name}</h3>
                 <p className="text-[13px] text-[#8B6F3E] font-medium">{t.title}</p>
                 <p className="text-[12px] text-[var(--text-muted)] mt-1">{t.years} years experience</p>
@@ -495,7 +495,7 @@ export default function GeneralContractorPage() {
       <section className="py-24 md:py-32 bg-[var(--bg-elevated)]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-            <div className="reveal-rise photo-slot aspect-[4/3] rounded-sm" data-label="Showroom interior · 800×600" />
+            <div className="reveal-rise photo-slot aspect-[4/3] rounded-sm" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
 
             <div className="reveal">
               <p className="text-[11px] font-semibold tracking-[0.25em] uppercase text-[#8B6F3E] mb-4">About</p>
@@ -644,7 +644,7 @@ export default function GeneralContractorPage() {
             </div>
 
             {/* Map slot */}
-            <div className="reveal-rise photo-slot aspect-[4/3] rounded-sm" data-label="Map — Hinsdale, IL · 800×600" />
+            <div className="reveal-rise photo-slot aspect-[4/3] rounded-sm" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
           </div>
         </div>
       </section>

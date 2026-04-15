@@ -124,7 +124,7 @@ export default function LandscapingPage() {
       {/* ═══════════════ HERO ═══════════════ */}
       <section className="pt-14">
         {/* Giant photo slot */}
-        <div className="w-full aspect-[21/9] photo-slot" data-label="Hero — outdoor living space" />
+        <div className="w-full aspect-[21/9] photo-slot" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
 
         <div className="max-w-5xl mx-auto px-6 md:px-10 py-20 md:py-28 text-center">
           <p className="eyebrow mb-6 fade-up" style={{ color: "#8B6F3E" }}>Design + Build</p>
@@ -198,7 +198,7 @@ export default function LandscapingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PROJECTS.map((p) => (
               <div key={p.title} className="group reveal-rise">
-                <div className="aspect-[4/3] photo-slot rounded-lg overflow-hidden transition-all duration-500 group-hover:shadow-xl group-hover:scale-[1.02]" data-label={p.label} />
+                <div className="aspect-[4/3] photo-slot rounded-lg overflow-hidden transition-all duration-500 group-hover:shadow-xl group-hover:scale-[1.02]" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
                 <div className="mt-4">
                   <h3 className="text-[17px] font-semibold tracking-tight">{p.title}</h3>
                   <p className="text-[13px] text-[var(--text-secondary)] mt-0.5">{p.location}</p>
@@ -227,14 +227,14 @@ export default function LandscapingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center reveal-rise">
             {/* Sketch */}
             <div className="text-center">
-              <div className="aspect-square photo-slot rounded-lg" data-label="Plan sketch" />
+              <div className="aspect-square photo-slot rounded-lg" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
               <p className="mt-4 text-[13px] font-medium tracking-widest uppercase text-[var(--text-muted)]">Plan Sketch</p>
             </div>
             {/* Arrow */}
             <div className="hidden md:flex items-center justify-center -mx-8 relative">
               <ChevronRight className="absolute left-0 w-5 h-5 text-[#8B6F3E]" />
               <div className="flex-1 mx-6">
-                <div className="aspect-square photo-slot rounded-lg" data-label="3D rendering" />
+                <div className="aspect-square photo-slot rounded-lg" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
                 <p className="mt-4 text-[13px] font-medium tracking-widest uppercase text-[var(--text-muted)] text-center">3D Rendering</p>
               </div>
               <ChevronRight className="absolute right-0 w-5 h-5 text-[#8B6F3E]" />
@@ -244,7 +244,7 @@ export default function LandscapingPage() {
               <div className="flex items-center justify-center py-2">
                 <ChevronRight className="w-5 h-5 text-[#8B6F3E] rotate-90" />
               </div>
-              <div className="aspect-square photo-slot rounded-lg" data-label="3D rendering" />
+              <div className="aspect-square photo-slot rounded-lg" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
               <p className="mt-4 text-[13px] font-medium tracking-widest uppercase text-[var(--text-muted)]">3D Rendering</p>
               <div className="flex items-center justify-center py-2">
                 <ChevronRight className="w-5 h-5 text-[#8B6F3E] rotate-90" />
@@ -252,7 +252,7 @@ export default function LandscapingPage() {
             </div>
             {/* Completed */}
             <div className="text-center">
-              <div className="aspect-square photo-slot rounded-lg" data-label="Completed project" />
+              <div className="aspect-square photo-slot rounded-lg" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
               <p className="mt-4 text-[13px] font-medium tracking-widest uppercase text-[var(--text-muted)]">Completed Project</p>
             </div>
           </div>
@@ -276,7 +276,7 @@ export default function LandscapingPage() {
               const Icon = s.icon;
               return (
                 <div key={s.title} className="group reveal-rise bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-xl overflow-hidden hover:border-[var(--border-medium)] hover:shadow-lg transition-all duration-300">
-                  <div className="aspect-[4/3] photo-slot" data-label={s.title} />
+                  <div className="aspect-[4/3] photo-slot" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
                   <div className="p-6">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-9 h-9 rounded-full bg-[var(--brand-soft)] flex items-center justify-center">
@@ -335,7 +335,7 @@ export default function LandscapingPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 reveal-rise">
             {MATERIALS.map((m) => (
               <div key={m.brand} className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-xl overflow-hidden hover:border-[var(--border-medium)] hover:shadow-md transition-all duration-300">
-                <div className="aspect-[4/3] photo-slot" data-label={m.label} />
+                <div className="aspect-[4/3] photo-slot" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
                 <div className="p-5">
                   <h3 className="text-[16px] font-semibold tracking-tight">{m.brand}</h3>
                   <p className="text-[13px] text-[var(--text-muted)] mt-0.5">{m.type}</p>
@@ -381,7 +381,7 @@ export default function LandscapingPage() {
       <section id="about" className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div className="aspect-[4/5] photo-slot rounded-xl reveal-rise" data-label="Designer at drafting table" />
+            <div className="aspect-[4/5] photo-slot rounded-xl reveal-rise" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1599629954294-14df9ec47f94?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
             <div className="reveal">
               <p className="eyebrow mb-4" style={{ color: "#8B6F3E" }}>Our Story</p>
               <h2 className="text-[clamp(2rem,4vw,3rem)] font-semibold tracking-[-0.03em] leading-[1.08]">
@@ -504,7 +504,7 @@ export default function LandscapingPage() {
             </div>
 
             {/* Map placeholder */}
-            <div className="aspect-[4/3] lg:aspect-auto photo-slot rounded-xl reveal-rise" data-label="Map — Highland Park, IL" />
+            <div className="aspect-[4/3] lg:aspect-auto photo-slot rounded-xl reveal-rise" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
           </div>
         </div>
       </section>

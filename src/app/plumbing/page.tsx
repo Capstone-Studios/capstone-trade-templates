@@ -238,7 +238,7 @@ export default function PlumbingPage() {
             {/* Hero photo */}
             <div
               className="photo-slot rounded-2xl aspect-[4/5] lg:aspect-[3/4]"
-              data-label="Uniformed tech on doorstep · 800×1000"
+              style={{ backgroundImage: "url(https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
             />
           </div>
         </div>
@@ -333,7 +333,7 @@ export default function PlumbingPage() {
                 key={i}
                 className="reveal-rise bg-[var(--bg-surface)] rounded-xl overflow-hidden border border-[var(--border-subtle)] hover:border-[var(--border-strong)] hover:shadow-lg transition-all duration-300"
               >
-                <div className="photo-slot aspect-[4/3]" data-label={svc.label} />
+                <div className="photo-slot aspect-[4/3]" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80&auto=format)`, backgroundSize: "cover", backgroundPosition: "center" }} />
                 <div className="p-6">
                   <h3 className="text-[17px] font-bold text-[var(--brand-primary)] mb-2">{svc.title}</h3>
                   <p className="text-[13px] leading-[1.65] text-[var(--text-secondary)]">{svc.desc}</p>
@@ -359,7 +359,7 @@ export default function PlumbingPage() {
           <div className="reveal-rise mb-10">
             <div
               className="photo-slot rounded-2xl aspect-[2/1] w-full"
-              data-label="Service area map · 1200×600"
+              style={{ backgroundImage: "url(https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
             />
           </div>
 
@@ -461,7 +461,7 @@ export default function PlumbingPage() {
             <div className="reveal-rise">
               <div
                 className="photo-slot rounded-2xl aspect-[4/3]"
-                data-label="Team in uniform by trucks · 900×675"
+                style={{ backgroundImage: "url(https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
               />
             </div>
             <div className="reveal">
@@ -624,7 +624,7 @@ export default function PlumbingPage() {
             <div className="reveal-rise">
               <div
                 className="photo-slot rounded-2xl aspect-[4/3] w-full"
-                data-label="Google Maps embed · 800×600"
+                style={{ backgroundImage: "url(https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
               />
             </div>
           </div>

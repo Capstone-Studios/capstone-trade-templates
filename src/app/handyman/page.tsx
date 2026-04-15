@@ -330,7 +330,7 @@ export default function HandymanPage() {
           {/* Photo slot */}
           <div
             className="photo-slot rounded-2xl aspect-[4/5] lg:aspect-[3/4] fade-up-2"
-            data-label="Smiling tech with tool belt on front porch · 600×800"
+            style={{ backgroundImage: "url(https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
           />
         </div>
       </section>
@@ -473,7 +473,7 @@ export default function HandymanPage() {
           </div>
           <div
             className="photo-slot rounded-2xl aspect-[4/3] reveal-rise"
-            data-label="Online booking calendar · embed"
+            style={{ backgroundImage: "url(https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
           />
         </div>
       </section>
@@ -582,8 +582,7 @@ export default function HandymanPage() {
               <div
                 key={label}
                 className="photo-slot rounded-xl reveal-rise"
-                style={{ aspectRatio: i % 3 === 0 ? "4/5" : "4/3" }}
-                data-label={label}
+                style={{ aspectRatio: i % 3 === 0 ? "4/5" : "4/3", backgroundImage: "url(https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
               />
             ))}
           </div>
@@ -595,7 +594,7 @@ export default function HandymanPage() {
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div
             className="photo-slot rounded-2xl aspect-[4/3] reveal-rise"
-            data-label="Team photo by branded truck · 600×450"
+            style={{ backgroundImage: "url(https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
           />
           <div>
             <SectionLabel>About FixRight</SectionLabel>
@@ -702,7 +701,7 @@ export default function HandymanPage() {
           {/* Map slot */}
           <div
             className="photo-slot rounded-2xl aspect-[4/3] reveal-rise"
-            data-label="Google Maps embed · Arlington Heights · 600×450"
+            style={{ backgroundImage: "url(https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
           />
         </div>
       </section>

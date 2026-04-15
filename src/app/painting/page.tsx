@@ -158,7 +158,7 @@ export default function PaintingPage() {
             <div className="relative">
               <div
                 className="photo-slot aspect-[16/10] rounded-2xl"
-                data-label="Before \u00b7 Living Room \u00b7 1200\u00d7750"
+                style={{ backgroundImage: "url(https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
               />
               <span className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm text-xs font-medium tracking-wide uppercase text-[var(--text-secondary)]">
                 Before
@@ -167,7 +167,7 @@ export default function PaintingPage() {
             <div className="relative">
               <div
                 className="photo-slot aspect-[16/10] rounded-2xl"
-                data-label="After \u00b7 Living Room \u00b7 1200\u00d7750"
+                style={{ backgroundImage: "url(https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
               />
               <span className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-[var(--brand-accent)]/90 backdrop-blur-sm text-xs font-medium tracking-wide uppercase text-white">
                 After
@@ -273,11 +273,11 @@ export default function PaintingPage() {
                 <div className="grid grid-cols-2 gap-0.5">
                   <div
                     className="photo-slot aspect-[4/3]"
-                    data-label={p.labelBefore}
+                    style={{ backgroundImage: "url(https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
                   />
                   <div
                     className="photo-slot aspect-[4/3]"
-                    data-label={p.labelAfter}
+                    style={{ backgroundImage: "url(https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
                   />
                 </div>
                 <div className="px-5 py-4">
@@ -298,7 +298,7 @@ export default function PaintingPage() {
             <div className="reveal">
               <div
                 className="photo-slot aspect-[4/3] rounded-2xl"
-                data-label="Cabinet spray booth \u00b7 before/after \u00b7 1200\u00d7900"
+                style={{ backgroundImage: "url(https://images.unsplash.com/photo-1595814433015-e6f5ce69614e?w=800&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
               />
             </div>
 
@@ -397,7 +397,7 @@ export default function PaintingPage() {
             <div className="reveal-rise bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] overflow-hidden">
               <div
                 className="photo-slot aspect-[16/9]"
-                data-label="Interior painting \u00b7 living room \u00b7 1200\u00d7675"
+                style={{ backgroundImage: "url(https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
               />
               <div className="p-6 md:p-8">
                 <h3 className="text-xl font-semibold">Interior Painting</h3>
@@ -421,7 +421,7 @@ export default function PaintingPage() {
             <div className="reveal-rise bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] overflow-hidden">
               <div
                 className="photo-slot aspect-[16/9]"
-                data-label="Exterior painting \u00b7 home facade \u00b7 1200\u00d7675"
+                style={{ backgroundImage: "url(https://images.unsplash.com/photo-1595814433015-e6f5ce69614e?w=800&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
               />
               <div className="p-6 md:p-8">
                 <h3 className="text-xl font-semibold">Exterior Painting</h3>
@@ -517,7 +517,7 @@ export default function PaintingPage() {
             <div className="reveal">
               <div
                 className="photo-slot aspect-[4/3] rounded-2xl"
-                data-label="Crew photo \u00b7 Fineline team \u00b7 1200\u00d7900"
+                style={{ backgroundImage: "url(https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
               />
             </div>
             <div className="reveal">
@@ -658,7 +658,7 @@ export default function PaintingPage() {
             <div className="reveal">
               <div
                 className="photo-slot aspect-[4/3] rounded-2xl"
-                data-label="Map \u00b7 321 Central St, Evanston IL \u00b7 1200\u00d7900"
+                style={{ backgroundImage: "url(https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
               />
             </div>
           </div>

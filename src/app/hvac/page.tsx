@@ -219,7 +219,7 @@ export default function HVACPage() {
             </div>
           </div>
           {/* Hero photo-slot */}
-          <div className="photo-slot rounded-2xl aspect-[4/3] lg:aspect-[3/4]" data-label="Tech at outdoor condenser unit" />
+          <div className="photo-slot rounded-2xl aspect-[4/3] lg:aspect-[3/4]" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
         </div>
       </section>
 
@@ -250,7 +250,7 @@ export default function HVACPage() {
                 key={brand.name}
                 className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] p-6 flex flex-col items-center gap-4 hover:border-[var(--border-strong)] hover:shadow-lg transition-all"
               >
-                <div className="photo-slot w-full aspect-[3/2] rounded-xl" data-label={brand.label} />
+                <div className="photo-slot w-full aspect-[3/2] rounded-xl" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1631545806609-3c480b4bb4a2?w=800&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
                 <div className="text-center">
                   <p className="text-[16px] font-semibold" style={{ color: P }}>{brand.name}</p>
                   <p className="text-[12px] font-medium mt-1" style={{ color: A }}>{brand.cert}</p>
@@ -276,7 +276,7 @@ export default function HVACPage() {
                 key={svc.title}
                 className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] overflow-hidden hover:border-[var(--border-strong)] hover:shadow-lg hover:-translate-y-1 transition-all duration-500 reveal-rise"
               >
-                <div className="photo-slot w-full aspect-[16/10]" data-label={svc.label} />
+                <div className="photo-slot w-full aspect-[16/10]" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1631545806609-3c480b4bb4a2?w=800&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
                 <div className="p-7">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ backgroundColor: S }}>
@@ -447,7 +447,7 @@ export default function HVACPage() {
                 key={item.title}
                 className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] overflow-hidden hover:border-[var(--border-strong)] hover:shadow-lg transition-all reveal-rise"
               >
-                <div className="photo-slot w-full aspect-[4/3]" data-label={item.label} />
+                <div className="photo-slot w-full aspect-[4/3]" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
                 <div className="p-6">
                   <div className="w-9 h-9 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: S }}>
                     <item.icon className="w-4.5 h-4.5" style={{ color: A }} />
@@ -479,7 +479,7 @@ export default function HVACPage() {
               { h: "aspect-[4/3]", label: "Ductwork redesign — Batavia" },
               { h: "aspect-[3/4]", label: "Indoor air quality upgrade — Geneva" },
             ].map((item, i) => (
-              <div key={i} className={`photo-slot rounded-2xl ${item.h} break-inside-avoid`} data-label={item.label} />
+              <div key={i} className={`photo-slot rounded-2xl ${item.h} break-inside-avoid`} style={{ backgroundImage: "url(https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
             ))}
           </div>
         </div>
@@ -489,7 +489,7 @@ export default function HVACPage() {
       <section className="py-20 md:py-28 reveal" style={{ backgroundColor: "var(--bg-elevated)" }}>
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="photo-slot rounded-2xl aspect-[4/3]" data-label="Owner and team photo" />
+            <div className="photo-slot rounded-2xl aspect-[4/3]" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
             <div>
               <p className="eyebrow mb-3" style={{ color: A }}>About Comfort Air Systems</p>
               <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-semibold tracking-[-0.03em]" style={{ color: P }}>
@@ -598,7 +598,7 @@ export default function HVACPage() {
               </div>
             </div>
             {/* Map placeholder */}
-            <div className="photo-slot rounded-2xl aspect-[4/3] lg:aspect-auto lg:min-h-[400px]" data-label="Google Maps — 234 Commerce Dr, Aurora IL" />
+            <div className="photo-slot rounded-2xl aspect-[4/3] lg:aspect-auto lg:min-h-[400px]" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
           </div>
         </div>
       </section>

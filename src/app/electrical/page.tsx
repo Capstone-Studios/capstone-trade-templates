@@ -228,7 +228,7 @@ export default function ElectricalPage() {
                 ))}
               </div>
             </div>
-            <div className="photo-slot rounded-2xl aspect-[4/5] md:aspect-[3/4]" data-label="Tech at panel box" />
+            <div className="photo-slot rounded-2xl aspect-[4/5] md:aspect-[3/4]" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
           </div>
         </div>
       </section>
@@ -268,7 +268,7 @@ export default function ElectricalPage() {
                 key={p.name}
                 className="reveal-rise bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-2xl overflow-hidden hover:border-[rgba(255,255,255,0.16)] transition-colors"
               >
-                <div className="photo-slot aspect-[4/3]" data-label={p.name} />
+                <div className="photo-slot aspect-[4/3]" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1565608087341-404b25492fee?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
                 <div className="p-6">
                   <span
                     className="inline-block text-[10px] font-bold tracking-[0.12em] uppercase px-3 py-1 rounded-full mb-3"
@@ -317,7 +317,7 @@ export default function ElectricalPage() {
                 key={c.name}
                 className="reveal-rise bg-white border border-[var(--border-subtle)] rounded-2xl overflow-hidden hover:border-[var(--border-medium)] hover:shadow-lg transition-all group"
               >
-                <div className="photo-slot aspect-square" data-label={c.name} />
+                <div className="photo-slot aspect-square" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
                 <div className="p-5">
                   <h3 className="text-[16px] font-semibold tracking-[-0.01em] mb-1">{c.name}</h3>
                   <div className="text-[22px] font-bold text-[#F59E0B] tracking-[-0.02em]">{c.price}</div>
@@ -363,7 +363,7 @@ export default function ElectricalPage() {
                   key={s.num}
                   className="reveal-rise bg-white border border-[var(--border-subtle)] rounded-2xl overflow-hidden hover:border-[var(--border-medium)] hover:shadow-lg transition-all group"
                 >
-                  <div className="photo-slot aspect-[16/10]" data-label={s.title} />
+                  <div className="photo-slot aspect-[16/10]" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
                   <div className="p-6">
                     <div className="flex items-center gap-3 mb-3">
                       <span className="text-[12px] font-bold text-[#F59E0B] tracking-[0.06em]">{s.num}</span>
@@ -523,7 +523,7 @@ export default function ElectricalPage() {
               <div
                 key={p.label}
                 className={`reveal-rise photo-slot ${p.aspect} rounded-xl break-inside-avoid`}
-                data-label={p.label}
+                style={{ backgroundImage: "url(https://images.unsplash.com/photo-1565608087341-404b25492fee?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }}
               />
             ))}
           </div>
@@ -534,7 +534,7 @@ export default function ElectricalPage() {
       <section id="about" className="py-20 md:py-28 bg-[#FAFAF8] border-y border-[var(--border-subtle)]">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-            <div className="photo-slot aspect-[4/5] rounded-2xl reveal-rise" data-label="Team / Owner photo" />
+            <div className="photo-slot aspect-[4/5] rounded-2xl reveal-rise" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
             <div className="reveal">
               <p className="eyebrow mb-3" style={{ color: "#F59E0B" }}>
                 About {BIZ}
@@ -673,7 +673,7 @@ export default function ElectricalPage() {
                 </div>
               </div>
             </div>
-            <div className="reveal-rise photo-slot rounded-2xl min-h-[320px]" data-label="Map / service area" />
+            <div className="reveal-rise photo-slot rounded-2xl min-h-[320px]" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=80&auto=format)", backgroundSize: "cover", backgroundPosition: "center" }} />
           </div>
         </div>
       </section>
