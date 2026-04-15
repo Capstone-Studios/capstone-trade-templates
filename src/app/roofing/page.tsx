@@ -1,195 +1,193 @@
-import {
-  Phone,
-  Star,
-  ArrowRight,
-  Shield,
-  Clock,
-  Award,
-  MapPin,
-  CheckCircle2,
-  ChevronRight,
-  Quote,
-  Zap,
-  Umbrella,
-  FileCheck,
-  Mail,
-  Wrench,
-  PaintBucket,
-  Droplets,
-  Fence,
-  CloudLightning,
-  Search,
-  Snowflake,
-  Home,
-} from "lucide-react";
+'use client';
 
-export const metadata = {
-  title: "Robert's Exterior Services LLC | Roofing, Siding & Storm Damage Repair",
-  description:
-    "Professional roofing, siding, gutters & more serving McHenry County since 1989. Licensed Illinois Public Adjusters. Free inspections. (815) 653-7663.",
-};
+import { useState } from 'react';
 
-/* ── Data — exact Roberts site content ── */
+/* ── Data ── */
 
-const PHONE = "(815) 653-7663";
-const PHONE_HREF = "tel:8156537663";
-const EMAIL = "robertsexteriorservicesllc@gmail.com";
-const ADDRESS = "7207 Delaware Rd, Wonder Lake, IL 60097";
-const HOURS = "Mon–Fri 7am–6pm | Sat 8am–4pm";
-const LICENSE = "Licensed IL Roofing Contractor #104.015895";
+const PHONE = '815-653-ROOF (7663)';
+const PHONE_HREF = 'tel:8156537663';
+const EMAIL = 'robertsexteriorservicesllc@gmail.com';
+const ADDRESS = '7207 Delaware Rd, Wonder Lake, IL 60097';
+const IMG = (name: string) => `https://robertsexteriorservices.com/images/${name}`;
 
-const STATS = [
-  { value: "35+", sublabel: "Years", label: "Industry Experience" },
-  { value: "500+", sublabel: "Projects", label: "Projects Completed" },
-  { value: "4.6★", sublabel: "Rating", label: "Average Rating" },
+const SERVICE_AREAS = [
+  'Wonder Lake', 'Crystal Lake', 'Woodstock', 'McHenry', 'Johnsburg',
+  'Lakemoor', 'Algonquin', 'Spring Grove', 'Fox Lake',
 ];
 
 const TRUST_BAR = [
-  { icon: Shield, title: "Licensed & Insured", desc: "Illinois roofing & siding licenses" },
-  { icon: Clock, title: "Same-Day Estimates", desc: "Free inspections & quotes" },
-  { icon: Zap, title: "Emergency Services", desc: "Storm damage & urgent repairs" },
-  { icon: FileCheck, title: "Insurance Specialists", desc: "Public adjuster certified" },
+  { emoji: '\u{1F6E1}\uFE0F', title: 'Fully Licensed & Insured', desc: 'Your home is protected' },
+  { emoji: '\u26A1', title: 'Same-Day Emergency Repairs', desc: 'We come when you need us' },
+  { emoji: '\u{1F4CB}', title: 'Licensed IL Public Adjusters', desc: 'Storm damage claims handled' },
+  { emoji: '\u{1F4CD}', title: 'McHenry County & Surrounding Areas', desc: 'In business since 1989' },
 ];
 
 const ABOUT_CHECKLIST = [
-  "Fully licensed & insured contractors",
-  "Free estimates & inspections",
-  "Certified public adjusters",
-  "24/7 emergency response",
-  "Warranty on all work",
-  "Local family-owned business",
+  'Roofing/siding/soffit & fascia',
+  'Gutters & gutter repair',
+  'Decks & repair work',
+  'Snow removal',
+  'Free written estimates for every project',
 ];
 
 const SERVICES = [
-  { title: "Roofing", desc: "Repairs, replacement & maintenance", icon: Home },
-  { title: "Siding", desc: "Vinyl, fiber cement & composite options", icon: PaintBucket },
-  { title: "Gutters & Downspouts", desc: "Installation, repair & cleaning", icon: Droplets },
-  { title: "Soffit & Fascia", desc: "Protection & aesthetic upgrades", icon: Wrench },
-  { title: "Decks", desc: "Design, build & restoration", icon: Fence },
-  { title: "Storm Damage", desc: "Emergency response & repairs", icon: CloudLightning },
-  { title: "Inspections", desc: "Comprehensive roof assessments", icon: Search },
-  { title: "Snow Removal", desc: "Safe seasonal clearance", icon: Snowflake },
+  { emoji: '\u{1F3E0}', title: 'Roofing', desc: 'Full replacements, repairs, and inspections. Quality shingles, proper underlayment, and expert flashing \u2014 built to last decades.', img: IMG('roofing-job.jpg') },
+  { emoji: '\u{1F9F1}', title: 'Siding', desc: 'New siding installation and replacement. We improve your home\u2019s curb appeal and insulation in one shot.', img: IMG('siding-lakefront.jpg') },
+  { emoji: '\u{1FA9F}', title: 'Soffit & Fascia', desc: 'Damaged soffit and fascia leads to rot, pests, and bigger problems. We replace it cleanly and correctly.', img: IMG('soffit-fascia.jpg') },
+  { emoji: '\u{1F327}\uFE0F', title: 'Gutters', desc: 'New gutter installation, seamless gutters, guards, and repairs. We solve drainage problems and protect your foundation.', img: IMG('gutters.jpg') },
+  { emoji: '\u{1F527}', title: 'Repair Work', desc: 'Leaks, storm damage, rot, or wear \u2014 we diagnose the problem and fix it right. Same-day emergency service available.', img: IMG('repair-work.jpg') },
+  { emoji: '\u2744\uFE0F', title: 'Snow Removal', desc: 'Keep your property safe and accessible all winter. We handle residential snow removal so you don\u2019t have to.', img: IMG('snow-removal.jpg') },
+  { emoji: '\u{1FAB5}', title: 'Decks', desc: 'New deck builds and deck repairs. We design and construct outdoor spaces built to handle Illinois weather year after year.', img: IMG('decks.jpg') },
+  { emoji: '\u26C8\uFE0F', title: 'Storm Damage', desc: 'Hail, wind, fallen branches \u2014 we respond fast and, as licensed IL public adjusters, we can work directly with your insurance company.', img: IMG('storm-damage.jpg') },
 ];
 
-const GALLERY = [
-  "https://robertsexteriorservices.com/images/hero.jpg",
-  "https://images.unsplash.com/photo-1632759145351-1d592919f522?w=600&q=80&auto=format",
-  "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80&auto=format",
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80&auto=format",
-  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80&auto=format",
-  "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80&auto=format",
-];
+const GALLERY_IMAGES = Array.from({ length: 13 }, (_, i) => IMG(`gallery-${i + 1}.jpg`));
 
 const REVIEWS = [
-  {
-    name: "Sarah M.",
-    stars: 5,
-    text: "Outstanding service from start to finish. The team was professional, clean, and finished ahead of schedule.",
-  },
-  {
-    name: "Mike T.",
-    stars: 5,
-    text: "Called them on a Sunday during a rainstorm. They had a tarp up within two hours and the repair done by Tuesday. Honest pricing, no upsell.",
-  },
-  {
-    name: "Jennifer L.",
-    stars: 5,
-    text: "We interviewed five companies before choosing Roberts. The owner walked us through every material option and the crew finished on schedule.",
-  },
+  { name: 'Patricia Taylor', time: '1 year ago', badge: '', text: 'My roof leaked during the storm Sunday night. I called Monday morning. They came to look at the problem and were able to repair it that day. I will definitely recommend this company.' },
+  { name: 'Carol Henry', time: '1 year ago', badge: '', text: 'Mitch came to our house and gave us a very fair quote on gutter replacement and offered a way to solve a problem area we had over the porch. Also gave us good advice on another area. Going with him for sure.' },
+  { name: 'Mike Duffy', time: '6 years ago', badge: 'Local Guide', text: 'Had them redo my roof and could not be happier with the awesome job that they did. Great price and fantastic result \u2014 would absolutely recommend to anyone in the area.' },
+  { name: 'Dan Sitkie', time: '5 years ago', badge: '', text: 'I got 3 quotes for getting three roofs done and over 180 feet of gutters installed. This company not only met all the things I asked for in the quote, they went above and beyond on every detail.' },
+  { name: 'John Adams', time: '1 year ago', badge: 'Local Guide', text: 'They put my gutters in a couple years ago. Did a great job \u2014 solid work, no complaints. Would call them again for any future work without hesitation.' },
+  { name: 'Susan Smith', time: '2 years ago', badge: 'Local Guide', text: 'Excellent service and fast! They handled everything professionally from start to finish. Highly recommend for any exterior work.' },
 ];
 
-const SERVICE_AREAS = [
-  "Wonder Lake", "Crystal Lake", "Woodstock", "McHenry",
-  "Algonquin", "Lakemoor", "Johnsburg",
+const SERVICE_OPTIONS = [
+  'Roofing', 'Siding', 'Soffit & Fascia', 'Gutters', 'Repair Work',
+  'Snow Removal', 'Decks', 'Storm Damage / Insurance Claim', 'Other',
 ];
+
+const NAV_LINKS = ['About', 'Services', 'Gallery', 'Reviews'];
+
+/* ── Helpers ── */
+
+function Eyebrow({ children, center }: { children: string; center?: boolean }) {
+  return (
+    <div className={`flex items-center gap-2 mb-4 ${center ? 'justify-center' : ''}`}>
+      <span className="w-8 h-[2px] bg-[#c41017]" />
+      <span
+        className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#c41017]"
+        style={{ fontFamily: 'var(--font-barlow), sans-serif' }}
+      >
+        {children}
+      </span>
+      {center && <span className="w-8 h-[2px] bg-[#c41017]" />}
+    </div>
+  );
+}
+
+function Stars({ count = 5 }: { count?: number }) {
+  return (
+    <span className="inline-flex gap-0.5">
+      {Array.from({ length: count }, (_, i) => (
+        <svg key={i} className="w-4 h-4 fill-amber-400 text-amber-400" viewBox="0 0 20 20">
+          <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.7l5.34-.78L10 1z" />
+        </svg>
+      ))}
+    </span>
+  );
+}
 
 /* ══════════════════════════════════════════════════════════ */
 
 export default function RoofingPage() {
-  return (
-    <div className="min-h-screen bg-[#faf9f6] text-[#181818]" style={{ fontFamily: "var(--font-barlow), var(--font-body), system-ui, sans-serif" }}>
+  const [showAll, setShowAll] = useState(false);
+  const visibleGallery = showAll ? GALLERY_IMAGES : GALLERY_IMAGES.slice(0, 6);
 
+  return (
+    <div
+      className="min-h-screen bg-[#faf9f6] text-[#181818]"
+      style={{ fontFamily: 'var(--font-barlow), var(--font-body), system-ui, sans-serif' }}
+    >
       {/* ── NAV ── */}
       <nav className="fixed top-0 inset-x-0 z-50 bg-[#0c0c0c]/95 backdrop-blur-md border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
-          <a href="#" className="text-white text-lg font-semibold tracking-tight" style={{ fontFamily: "var(--font-display), Georgia, serif" }}>
-            Robert&apos;s Exterior Services
+          <a
+            href="#"
+            className="text-white text-lg font-semibold tracking-tight"
+            style={{ fontFamily: 'var(--font-display), Georgia, serif' }}
+          >
+            Robert&apos;s{' '}
+            <span className="font-normal italic text-white/70">Exterior</span>{' '}
+            Services, LLC
           </a>
           <div className="hidden md:flex items-center gap-8 text-[13px] font-medium text-white/60">
-            <a href="#about" className="hover:text-white transition-colors">About</a>
-            <a href="#services" className="hover:text-white transition-colors">Services</a>
-            <a href="#gallery" className="hover:text-white transition-colors">Gallery</a>
-            <a href="#reviews" className="hover:text-white transition-colors">Reviews</a>
-            <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+            {NAV_LINKS.map((l) => (
+              <a key={l} href={`#${l.toLowerCase()}`} className="hover:text-white transition-colors">
+                {l}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              className="px-5 py-2.5 rounded-full bg-[#c41017] text-white text-[13px] font-semibold hover:bg-[#dc1219] transition-colors"
+            >
+              Get a Quote
+            </a>
           </div>
-          <a
-            href={PHONE_HREF}
-            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#c41017] text-white text-[13px] font-semibold hover:bg-[#a80d14] transition-colors"
-          >
-            Request Estimate
-          </a>
         </div>
       </nav>
 
       {/* ── HERO ── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Decorative vertical red line */}
+        <div className="absolute left-8 md:left-16 top-0 bottom-0 w-[3px] bg-[#c41017]/30 z-10" />
+
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "linear-gradient(135deg, rgba(10,10,10,0.93) 0%, rgba(10,10,10,0.62) 55%, rgba(10,10,10,0.88) 100%), url(https://robertsexteriorservices.com/images/hero.jpg)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundImage: `linear-gradient(135deg, rgba(10,10,10,0.93) 0%, rgba(10,10,10,0.62) 55%, rgba(10,10,10,0.88) 100%), url(${IMG('hero.jpg')})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
         />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-32 w-full">
           <div className="max-w-2xl">
-            {/* Eyebrow */}
-            <div className="fade-up inline-flex items-center gap-2 mb-8">
-              <span className="w-8 h-[2px] bg-[#c41017]" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#c41017]">
-                Trusted Local Contractor
-              </span>
-            </div>
+            <Eyebrow>McHenry County &amp; Surrounding Areas</Eyebrow>
 
             <h1
-              className="fade-up-1 text-[clamp(2.5rem,6vw,5rem)] font-bold tracking-[-0.02em] leading-[0.95] text-white"
-              style={{ fontFamily: "var(--font-display), Georgia, serif" }}
+              className="text-[clamp(2.5rem,6vw,5rem)] font-bold tracking-[-0.02em] leading-[0.95] text-white"
+              style={{ fontFamily: 'var(--font-display), Georgia, serif' }}
             >
-              Quality Roofing &amp; Exterior Work You Can{" "}
-              <span className="italic text-[#c41017]">Count On</span>
+              Built to<br />
+              <span className="italic text-[#c41017]">Last.</span><br />
+              Built Right.
             </h1>
 
-            <p className="fade-up-2 mt-6 text-[clamp(1rem,1.3vw,1.2rem)] leading-[1.7] text-white/60 max-w-lg">
-              Professional roofing, siding, gutters &amp; more serving McHenry County since 1989
+            <p className="mt-6 text-[clamp(1rem,1.3vw,1.15rem)] leading-[1.7] text-white/60 max-w-lg">
+              Robert&apos;s Exterior Services, LLC has protected homes across McHenry County with honest workmanship, fair pricing, and service you can count on &mdash; rain or shine.
             </p>
 
-            <p className="fade-up-2 mt-3 text-[13px] text-white/35 italic">
-              Est. 1989 | Licensed Illinois Public Adjusters
+            <p className="mt-3 text-[13px] text-white/35 italic">
+              In Business Since 1989 &nbsp;&middot;&nbsp; Licensed IL Public Adjusters for Storm Damage Claims
             </p>
 
             {/* CTAs */}
-            <div className="fade-up-3 mt-10 flex flex-wrap gap-4">
-              <a
-                href={PHONE_HREF}
-                className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#c41017] text-white font-semibold text-[15px] hover:bg-[#a80d14] transition-all hover:shadow-2xl hover:shadow-red-900/30"
-              >
-                Get Free Inspection
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+            <div className="mt-10 flex flex-wrap gap-4">
               <a
                 href="#contact"
+                className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#c41017] text-white font-semibold text-[15px] hover:bg-[#dc1219] transition-all hover:shadow-2xl hover:shadow-red-900/30"
+              >
+                Get a Free Estimate
+                <span className="group-hover:translate-x-1 transition-transform inline-block">&rarr;</span>
+              </a>
+              <a
+                href={PHONE_HREF}
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/20 text-white font-medium text-[15px] hover:bg-white/10 transition-all"
               >
-                Schedule Consultation
+                <span role="img" aria-label="phone">&#x1F4DE;</span> 815-653-ROOF
               </a>
             </div>
 
             {/* Stats */}
-            <div className="fade-up-4 mt-14 flex gap-10">
-              {STATS.map((s) => (
-                <div key={s.sublabel}>
-                  <div className="text-[32px] font-bold text-white tracking-tight leading-none">{s.value}</div>
+            <div className="mt-14 flex gap-10 flex-wrap">
+              {[
+                { value: '4.6\u2605', label: 'Google Rating' },
+                { value: '35+', label: 'Years in Business' },
+                { value: '\u26A1', label: 'Same Day Repairs' },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div className="text-[28px] font-bold text-white tracking-tight leading-none">{s.value}</div>
                   <div className="mt-1 text-[11px] uppercase tracking-[0.12em] text-white/35">{s.label}</div>
                 </div>
               ))}
@@ -202,121 +200,135 @@ export default function RoofingPage() {
       <section className="bg-[#0c0c0c] border-y border-[#c41017]/20">
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {TRUST_BAR.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <div key={i} className="flex items-start gap-3">
-                  <Icon className="w-5 h-5 text-[#c41017] shrink-0 mt-0.5" strokeWidth={2} />
-                  <div>
-                    <div className="text-[13px] font-semibold text-white/80">{item.title}</div>
-                    <div className="text-[11px] text-white/35 mt-0.5">{item.desc}</div>
-                  </div>
+            {TRUST_BAR.map((item, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <span className="text-lg shrink-0 mt-0.5">{item.emoji}</span>
+                <div>
+                  <div className="text-[13px] font-semibold text-white/80">{item.title}</div>
+                  <div className="text-[11px] text-white/35 mt-0.5">{item.desc}</div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* Service Area Strip */}
+      <div className="bg-[#181818] py-3 text-center">
+        <p className="text-[12px] text-white/40 tracking-wide">
+          Serving {SERVICE_AREAS.join(' \u00B7 ')}
+        </p>
+      </div>
 
       {/* ── ABOUT ── */}
       <section id="about" className="py-24 md:py-36 bg-[#faf9f6]">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-center">
-            {/* Image */}
+            {/* Images */}
             <div className="md:col-span-5 relative">
               <div
-                className="reveal-rise rounded-2xl aspect-[4/5] shadow-2xl"
+                className="rounded-2xl aspect-[4/5] shadow-2xl"
                 style={{
-                  backgroundImage: "url(https://robertsexteriorservices.com/images/hero.jpg)",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center 30%",
+                  backgroundImage: `url(${IMG('overall.jpg')})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center 30%',
                 }}
               />
-              <div className="absolute -bottom-6 -right-6 bg-[#c41017] text-white rounded-2xl p-5 shadow-xl">
-                <div className="text-[28px] font-bold leading-none">35+</div>
-                <div className="text-[11px] uppercase tracking-[0.12em] mt-1 text-white/70">Years Experience</div>
+              {/* Accent image */}
+              <div
+                className="absolute -bottom-6 -right-6 w-36 h-36 rounded-2xl shadow-xl border-4 border-[#faf9f6]"
+                style={{
+                  backgroundImage: `url(${IMG('roofing-job.jpg')})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              />
+              {/* Year badge */}
+              <div className="absolute -bottom-6 -right-6 w-36 h-36 rounded-2xl bg-[#c41017]/90 flex flex-col items-center justify-center text-white shadow-xl">
+                <div className="text-[11px] uppercase tracking-[0.14em] text-white/70">Since</div>
+                <div className="text-[32px] font-bold leading-none">1989</div>
+                <div className="text-[11px] text-white/70 mt-1">Wonder Lake</div>
               </div>
             </div>
 
             {/* Copy */}
-            <div className="md:col-span-7 reveal">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="w-8 h-[2px] bg-[#c41017]" />
-                <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#c41017]">Our Story</span>
-              </div>
+            <div className="md:col-span-7">
+              <Eyebrow>About Us</Eyebrow>
               <h2
                 className="text-[clamp(2rem,4vw,3.25rem)] font-bold tracking-[-0.02em] leading-[1.08]"
-                style={{ fontFamily: "var(--font-display), Georgia, serif" }}
+                style={{ fontFamily: 'var(--font-display), Georgia, serif' }}
               >
-                Experience You Can Trust, Quality You Can{" "}
-                <span className="italic text-[#c41017]">See</span>
+                Neighbors You Can{' '}
+                <span className="italic text-[#c41017]">Trust</span>{' '}
+                With Your Home
               </h2>
-              <p className="mt-8 text-[17px] leading-[1.8] text-[#181818]/65">
-                For over three decades, Robert&apos;s Exterior Services has been the trusted choice for homeowners and businesses throughout McHenry County. Our team combines expert craftsmanship with genuine care for every project.
+              <p className="mt-8 text-[16px] leading-[1.8] text-[#383838]">
+                Robert&apos;s Exterior Services, LLC has been a trusted name in Wonder Lake and McHenry County since 1989. We&apos;re not a big national chain &mdash; we&apos;re your neighbors, and we treat every home like it&apos;s our own.
+              </p>
+              <p className="mt-4 text-[16px] leading-[1.8] text-[#383838]">
+                From emergency storm repairs to full exterior overhauls, our crew shows up on time, does the job right, and leaves your property cleaner than we found it. Straight answers and fair quotes &mdash; always.
               </p>
 
-              <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="mt-10 space-y-3">
                 {ABOUT_CHECKLIST.map((item) => (
                   <div key={item} className="flex items-center gap-3 text-[14px] font-medium text-[#181818]">
-                    <CheckCircle2 className="w-5 h-5 text-[#c41017] shrink-0" strokeWidth={2} />
+                    <svg className="w-5 h-5 text-[#c41017] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
                     {item}
                   </div>
                 ))}
               </div>
 
-              <div className="mt-8 p-4 rounded-xl bg-[#c41017]/8 border border-[#c41017]/15">
+              <div className="mt-8 p-4 rounded-xl bg-[#fdf1f1] border border-[#c41017]/15">
                 <p className="text-[13px] text-[#c41017] font-medium flex items-center gap-2">
-                  <FileCheck className="w-4 h-4 shrink-0" />
-                  Insurance claim specialists on staff to maximize your settlement
+                  <span>&#x1F4CB;</span>
+                  Licensed IL Public Adjusters &mdash; we handle storm damage insurance claims for you.
                 </p>
               </div>
-
-              <a
-                href={PHONE_HREF}
-                className="mt-8 inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#c41017] text-white font-semibold text-[14px] hover:bg-[#a80d14] transition-colors"
-              >
-                Get Your Free Estimate
-                <ArrowRight className="w-4 h-4" />
-              </a>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── SERVICES ── */}
-      <section id="services" className="py-24 md:py-36 bg-[#f4f1ea]">
+      <section id="services" className="py-24 md:py-36 bg-[#f7f5f1]">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="text-center mb-16 reveal">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="w-8 h-[2px] bg-[#c41017]" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#c41017]">What We Offer</span>
-              <span className="w-8 h-[2px] bg-[#c41017]" />
-            </div>
+          <div className="text-center mb-16">
+            <Eyebrow center>What We Do</Eyebrow>
             <h2
               className="text-[clamp(2rem,4vw,3.25rem)] font-bold tracking-[-0.02em]"
-              style={{ fontFamily: "var(--font-display), Georgia, serif" }}
+              style={{ fontFamily: 'var(--font-display), Georgia, serif' }}
             >
               Our <span className="italic text-[#c41017]">Services</span>
             </h2>
+            <p className="mt-4 text-[15px] text-[#686868] max-w-2xl mx-auto leading-[1.7]">
+              From a single repair to a full exterior transformation, we bring the same care and craftsmanship to every job &mdash; big or small.
+            </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-            {SERVICES.map((svc, i) => {
-              const Icon = svc.icon;
-              return (
-                <a
-                  key={i}
-                  href={PHONE_HREF}
-                  className="reveal-rise group bg-white rounded-2xl p-6 border border-[#181818]/8 hover:border-[#c41017]/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 text-center"
-                >
-                  <div className="w-14 h-14 rounded-full bg-[#c41017]/8 flex items-center justify-center mx-auto mb-4 group-hover:bg-[#c41017] transition-colors">
-                    <Icon className="w-6 h-6 text-[#c41017] group-hover:text-white transition-colors" strokeWidth={1.5} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {SERVICES.map((svc, i) => (
+              <div
+                key={i}
+                className="group bg-white rounded-2xl overflow-hidden border border-[#d8d4cd] hover:border-[#c41017]/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
+              >
+                <div
+                  className="h-48 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${svc.img})` }}
+                />
+                <div className="p-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xl">{svc.emoji}</span>
+                    <h3 className="text-[16px] font-bold tracking-[-0.01em]">{svc.title}</h3>
                   </div>
-                  <h3 className="text-[16px] font-bold tracking-[-0.01em] mb-2">{svc.title}</h3>
-                  <p className="text-[12px] leading-[1.6] text-[#181818]/50">{svc.desc}</p>
-                </a>
-              );
-            })}
+                  <p className="text-[13px] leading-[1.7] text-[#686868] mb-4">{svc.desc}</p>
+                  <a href="#contact" className="text-[13px] font-semibold text-[#c41017] hover:text-[#dc1219] transition-colors">
+                    Get a Quote &rarr;
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -324,80 +336,78 @@ export default function RoofingPage() {
       {/* ── GALLERY ── */}
       <section id="gallery" className="py-24 md:py-36 bg-[#faf9f6]">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="text-center mb-16 reveal">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="w-8 h-[2px] bg-[#c41017]" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#c41017]">Our Work</span>
-              <span className="w-8 h-[2px] bg-[#c41017]" />
-            </div>
+          <div className="text-center mb-16">
+            <Eyebrow center>Our Work</Eyebrow>
             <h2
               className="text-[clamp(2rem,4vw,3.25rem)] font-bold tracking-[-0.02em]"
-              style={{ fontFamily: "var(--font-display), Georgia, serif" }}
+              style={{ fontFamily: 'var(--font-display), Georgia, serif' }}
             >
-              Recent <span className="italic text-[#c41017]">Projects</span>
+              Projects We&apos;re <span className="italic text-[#c41017]">Proud Of</span>
             </h2>
+            <p className="mt-4 text-[15px] text-[#686868] max-w-2xl mx-auto leading-[1.7]">
+              A look at some of the work we&apos;ve done for homeowners across McHenry County and the surrounding area.
+            </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div
-              className="reveal-rise rounded-2xl col-span-1 row-span-2 min-h-[400px] overflow-hidden"
-              style={{
-                backgroundImage: `url(${GALLERY[0]})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            />
-            {GALLERY.slice(1).map((img, i) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {visibleGallery.map((img, i) => (
               <div
                 key={i}
-                className="reveal-rise rounded-2xl aspect-square overflow-hidden"
+                className="rounded-2xl aspect-[4/3] overflow-hidden bg-[#e8e4dd]"
                 style={{
                   backgroundImage: `url(${img})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
                 }}
               />
             ))}
           </div>
+
+          {!showAll && (
+            <div className="text-center mt-10">
+              <button
+                onClick={() => setShowAll(true)}
+                className="px-8 py-3.5 rounded-full border border-[#d8d4cd] text-[14px] font-semibold text-[#383838] hover:border-[#c41017] hover:text-[#c41017] transition-colors"
+              >
+                Show All Photos (13) &darr;
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
       {/* ── REVIEWS ── */}
-      <section id="reviews" className="py-24 md:py-36 bg-[#f4f1ea]">
+      <section id="reviews" className="py-24 md:py-36 bg-[#f7f5f1]">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="text-center mb-16 reveal">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="w-8 h-[2px] bg-[#c41017]" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#c41017]">Testimonials</span>
-              <span className="w-8 h-[2px] bg-[#c41017]" />
-            </div>
+          <div className="text-center mb-16">
+            <Eyebrow center>What Customers Say</Eyebrow>
             <h2
               className="text-[clamp(2rem,4vw,3.25rem)] font-bold tracking-[-0.02em]"
-              style={{ fontFamily: "var(--font-display), Georgia, serif" }}
+              style={{ fontFamily: 'var(--font-display), Georgia, serif' }}
             >
-              What Our Customers <span className="italic text-[#c41017]">Say</span>
+              Real Reviews from <span className="italic text-[#c41017]">Real Neighbors</span>
             </h2>
-            <p className="mt-3 text-[14px] text-[#181818]/40">4.6 out of 5 stars · 10+ verified reviews</p>
+            <div className="mt-4 flex items-center justify-center gap-2">
+              <Stars />
+              <span className="text-[14px] text-[#686868]">4.6 out of 5 &middot; 10 Google Reviews</span>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {REVIEWS.map((r, i) => (
               <div
                 key={i}
-                className="reveal-rise bg-white rounded-2xl p-8 border border-[#181818]/8 hover:border-[#c41017]/20 hover:-translate-y-1 transition-all duration-500"
+                className="bg-white rounded-2xl p-8 border border-[#d8d4cd] hover:border-[#c41017]/20 hover:-translate-y-1 transition-all duration-500"
               >
-                <Quote className="w-8 h-8 text-[#c41017]/20 mb-4" strokeWidth={1.5} />
-                <div className="flex items-center gap-0.5 mb-4">
-                  {[...Array(r.stars)].map((_, s) => (
-                    <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <p className="text-[14px] leading-[1.75] text-[#181818]/65 mb-6">
-                  &ldquo;{r.text}&rdquo;
+                <span className="text-[48px] leading-none text-[#c41017]/20 font-serif">&ldquo;</span>
+                <p className="text-[14px] leading-[1.75] text-[#383838] mb-6 -mt-4">
+                  {r.text}
                 </p>
-                <div className="pt-4 border-t border-[#181818]/8">
+                <div className="pt-4 border-t border-[#d8d4cd]">
                   <p className="text-[13px] font-semibold">{r.name}</p>
-                  <p className="text-[11px] text-[#181818]/40 mt-0.5">Verified Homeowner</p>
+                  <p className="text-[11px] text-[#a0a0a0] mt-0.5">
+                    {r.time}{r.badge && ` \u00B7 ${r.badge}`}
+                  </p>
                 </div>
               </div>
             ))}
@@ -405,75 +415,118 @@ export default function RoofingPage() {
         </div>
       </section>
 
-      {/* ── CONTACT / CTA ── */}
-      <section id="contact" className="relative py-32 md:py-40 overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: "url(https://robertsexteriorservices.com/images/hero.jpg)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-        <div className="absolute inset-0 bg-[#0a0a0a]/88" />
-
-        <div className="relative max-w-4xl mx-auto px-6 md:px-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Left — CTA copy */}
+      {/* ── CONTACT ── */}
+      <section id="contact" className="py-24 md:py-36 bg-[#faf9f6]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* Left */}
             <div>
-              <div className="flex items-center gap-2 mb-6">
-                <span className="w-8 h-[2px] bg-[#c41017]" />
-                <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#c41017]">Get In Touch</span>
-              </div>
+              <Eyebrow>Reach Out</Eyebrow>
               <h2
-                className="text-[clamp(2rem,4.5vw,3.5rem)] font-bold tracking-[-0.02em] leading-[1.05] text-white"
-                style={{ fontFamily: "var(--font-display), Georgia, serif" }}
+                className="text-[clamp(2rem,4vw,3.25rem)] font-bold tracking-[-0.02em] leading-[1.08]"
+                style={{ fontFamily: 'var(--font-display), Georgia, serif' }}
               >
-                Get Your Free Estimate{" "}
-                <span className="italic text-[#c41017]">Today</span>
+                Get Your <span className="italic text-[#c41017]">Free Estimate</span>
               </h2>
-              <p className="mt-6 text-[16px] leading-[1.7] text-white/50">
-                Contact us for a no-obligation inspection and quote. Available for same-day estimates on most projects.
+              <p className="mt-6 text-[16px] leading-[1.7] text-[#686868]">
+                Ready to talk about your project? Reach out and we&apos;ll get back to you fast &mdash; usually the same day. No pressure, no obligation.
               </p>
 
-              <div className="mt-8 space-y-4">
-                <a href={PHONE_HREF} className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
-                  <Phone className="w-4 h-4 text-[#c41017]" />
-                  <span className="text-[14px]">{PHONE}</span>
-                </a>
-                <a href={`mailto:${EMAIL}`} className="flex items-center gap-3 text-white/70 hover:text-white transition-colors">
-                  <Mail className="w-4 h-4 text-[#c41017]" />
-                  <span className="text-[14px] break-all">{EMAIL}</span>
-                </a>
-                <div className="flex items-center gap-3 text-white/70">
-                  <MapPin className="w-4 h-4 text-[#c41017] shrink-0" />
-                  <span className="text-[14px]">{ADDRESS}</span>
-                </div>
-                <div className="flex items-center gap-3 text-white/70">
-                  <Clock className="w-4 h-4 text-[#c41017] shrink-0" />
-                  <span className="text-[14px]">{HOURS}</span>
-                </div>
+              <div className="mt-8 space-y-5">
+                {[
+                  { emoji: '\u{1F4DE}', label: 'Phone', value: '815-653-ROOF (7663)', href: PHONE_HREF },
+                  { emoji: '\u2709\uFE0F', label: 'Email', value: EMAIL, href: `mailto:${EMAIL}` },
+                  { emoji: '\u{1F4CD}', label: 'Address', value: ADDRESS },
+                  { emoji: '\u{1F5FA}\uFE0F', label: 'Service Area', value: 'McHenry County & Surrounding Areas' },
+                  { emoji: '\u26A1', label: 'Emergency Service', value: 'Same-day response available for urgent repairs' },
+                ].map((c) => (
+                  <div key={c.label} className="flex items-start gap-3">
+                    <span className="text-lg shrink-0">{c.emoji}</span>
+                    <div>
+                      <div className="text-[11px] uppercase tracking-[0.12em] text-[#a0a0a0] mb-0.5">{c.label}</div>
+                      {c.href ? (
+                        <a href={c.href} className="text-[14px] font-medium text-[#181818] hover:text-[#c41017] transition-colors">
+                          {c.value}
+                        </a>
+                      ) : (
+                        <div className="text-[14px] text-[#383838]">{c.value}</div>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
 
-              <div className="mt-8">
-                <p className="text-[11px] uppercase tracking-[0.14em] text-white/25 mb-2">Service Areas</p>
-                <p className="text-[13px] text-white/45">{SERVICE_AREAS.join(" · ")}</p>
+              {/* Map */}
+              <div className="mt-10 rounded-2xl overflow-hidden border border-[#d8d4cd]">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2953.123!2d-88.391!3d42.384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s7207+Delaware+Rd+Wonder+Lake+IL!5e0!3m2!1sen!2sus!4v1"
+                  width="100%"
+                  height="250"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Robert's Exterior Services Location"
+                />
               </div>
             </div>
 
-            {/* Right — CTA button */}
-            <div className="text-center md:text-left">
-              <a
-                href={PHONE_HREF}
-                className="inline-flex items-center gap-3 h-16 px-10 rounded-full bg-[#c41017] text-[17px] font-bold text-white hover:bg-[#a80d14] transition-all hover:shadow-2xl hover:shadow-red-900/30"
+            {/* Right — Form */}
+            <div>
+              <form
+                className="bg-white rounded-2xl p-8 md:p-10 border border-[#d8d4cd] shadow-sm"
+                onSubmit={(e) => e.preventDefault()}
               >
-                <Phone className="w-5 h-5" />
-                Call {PHONE}
-                <ArrowRight className="w-5 h-5" />
-              </a>
-              <p className="mt-6 text-[12px] text-white/30">
-                Same-day estimates available · No obligation
-              </p>
+                <div className="space-y-5">
+                  <div>
+                    <label className="block text-[12px] font-semibold uppercase tracking-[0.1em] text-[#686868] mb-2">Name</label>
+                    <input
+                      type="text"
+                      className="w-full h-12 px-4 rounded-xl border border-[#d8d4cd] bg-[#faf9f6] text-[14px] text-[#181818] placeholder:text-[#a0a0a0] focus:outline-none focus:border-[#c41017] transition-colors"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[12px] font-semibold uppercase tracking-[0.1em] text-[#686868] mb-2">Phone</label>
+                    <input
+                      type="tel"
+                      className="w-full h-12 px-4 rounded-xl border border-[#d8d4cd] bg-[#faf9f6] text-[14px] text-[#181818] placeholder:text-[#a0a0a0] focus:outline-none focus:border-[#c41017] transition-colors"
+                      placeholder="Your phone number"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[12px] font-semibold uppercase tracking-[0.1em] text-[#686868] mb-2">Email</label>
+                    <input
+                      type="email"
+                      className="w-full h-12 px-4 rounded-xl border border-[#d8d4cd] bg-[#faf9f6] text-[14px] text-[#181818] placeholder:text-[#a0a0a0] focus:outline-none focus:border-[#c41017] transition-colors"
+                      placeholder="Your email"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[12px] font-semibold uppercase tracking-[0.1em] text-[#686868] mb-2">Service</label>
+                    <select className="w-full h-12 px-4 rounded-xl border border-[#d8d4cd] bg-[#faf9f6] text-[14px] text-[#181818] focus:outline-none focus:border-[#c41017] transition-colors">
+                      <option value="">Select a service...</option>
+                      {SERVICE_OPTIONS.map((o) => (
+                        <option key={o} value={o}>{o}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-[12px] font-semibold uppercase tracking-[0.1em] text-[#686868] mb-2">Message</label>
+                    <textarea
+                      rows={4}
+                      className="w-full px-4 py-3 rounded-xl border border-[#d8d4cd] bg-[#faf9f6] text-[14px] text-[#181818] placeholder:text-[#a0a0a0] focus:outline-none focus:border-[#c41017] transition-colors resize-none"
+                      placeholder="Tell us about your project..."
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full h-12 rounded-full bg-[#c41017] text-white font-semibold text-[15px] hover:bg-[#dc1219] transition-colors"
+                  >
+                    Send Message &rarr;
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -481,57 +534,36 @@ export default function RoofingPage() {
 
       {/* ── FOOTER ── */}
       <footer className="bg-[#0c0c0c] border-t border-[#c41017]/20 py-14">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-12 mb-12">
-            <div>
-              <h3
-                className="text-white text-lg font-semibold mb-2"
-                style={{ fontFamily: "var(--font-display), Georgia, serif" }}
+        <div className="max-w-7xl mx-auto px-6 md:px-10 text-center">
+          <h3
+            className="text-white text-xl font-semibold mb-2"
+            style={{ fontFamily: 'var(--font-display), Georgia, serif' }}
+          >
+            Robert&apos;s Exterior Services, LLC
+          </h3>
+          <p className="text-[13px] text-white/40 mb-3">
+            In Business Since 1989 &middot; Wonder Lake, IL
+          </p>
+          <p className="text-[12px] text-white/25 mb-6">
+            IL Residential License: 104.015895 &nbsp;&middot;&nbsp; IL Commercial License: 105.004239
+          </p>
+
+          <div className="flex items-center justify-center gap-6 mb-8">
+            {['About', 'Services', 'Gallery', 'Reviews', 'Contact'].map((l) => (
+              <a
+                key={l}
+                href={`#${l.toLowerCase()}`}
+                className="text-[13px] text-white/50 hover:text-white transition-colors"
               >
-                Robert&apos;s Exterior Services LLC
-              </h3>
-              <p className="text-[12px] text-white/30 italic mb-4">Est. 1989</p>
-              <p className="text-[13px] leading-[1.7] text-white/40">
-                Professional roofing, siding, and exterior services serving McHenry County for over 35 years.
-              </p>
-            </div>
-
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/30 mb-4">Navigation</p>
-              <div className="space-y-2.5">
-                {["Home", "About", "Services", "Gallery", "Reviews", "Contact"].map((link) => (
-                  <a key={link} href={link === "Home" ? "#" : `#${link.toLowerCase()}`} className="block text-[13px] text-white/50 hover:text-white transition-colors">
-                    {link}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/30 mb-4">Contact</p>
-              <div className="space-y-2.5 text-[13px] text-white/50">
-                <a href={PHONE_HREF} className="block text-white font-medium hover:text-[#c41017] transition-colors">{PHONE}</a>
-                <a href={`mailto:${EMAIL}`} className="block hover:text-white transition-colors break-all">{EMAIL}</a>
-                <p>{ADDRESS}</p>
-                <p className="text-white/35">{HOURS}</p>
-              </div>
-            </div>
-
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/30 mb-4">Service Areas</p>
-              <p className="text-[13px] text-white/50 leading-[1.7]">
-                {SERVICE_AREAS.join(" · ")}
-              </p>
-            </div>
+                {l}
+              </a>
+            ))}
           </div>
 
-          <div className="pt-8 border-t border-white/8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-[12px] text-white/25">
-              © {new Date().getFullYear()} Robert&apos;s Exterior Services LLC · All rights reserved
-            </div>
-            <div className="text-[11px] text-white/20 font-mono">
-              {LICENSE}
-            </div>
+          <div className="pt-8 border-t border-white/8">
+            <p className="text-[12px] text-white/25">
+              &copy; 2025 Robert&apos;s Exterior Services, LLC &middot; McHenry County &amp; Surrounding Areas
+            </p>
           </div>
         </div>
       </footer>
@@ -542,8 +574,7 @@ export default function RoofingPage() {
           href={PHONE_HREF}
           className="flex items-center justify-center gap-2 h-12 rounded-full bg-[#c41017] text-[15px] font-bold text-white shadow-lg"
         >
-          <Phone className="w-4 h-4" />
-          Call {PHONE}
+          <span>&#x1F4DE;</span> 815-653-ROOF
         </a>
       </div>
     </div>
